@@ -1,0 +1,19 @@
+plugins {
+    id "com.jfrog.bintray" version "1.1"
+}
+
+apply plugin: 'scala'
+
+repositories {
+    mavenCentral()
+    maven { url "http://dl.bintray.com/scalaz/releases" }
+}
+
+dependencies {
+    compile 'org.scala-lang:scala-library:2.10.5'
+    testCompile 'org.specs2:specs2-core_2.10:3.6.1'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.5'
+}
