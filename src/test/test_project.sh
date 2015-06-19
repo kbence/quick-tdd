@@ -24,6 +24,8 @@ for language_dir in "$LANGUAGE_ROOT"/*; do
 
         if ! test_language "$language"; then
             echo "Testing template for $language has failed!"
+        else
+            echo "Testing template for $language was successful!"
         fi
     else
         echo "Skipping template for language $language as it's not available on this machine!"
