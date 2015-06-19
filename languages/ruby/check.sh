@@ -1,6 +1,6 @@
 #!/usr/bin/env false
 
 function ruby_available() {
-    which -s ruby
+    which ruby
     return $?
 }
