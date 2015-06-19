@@ -1,4 +1,5 @@
-var gol = require('./../src/gol');
+var gol    = require('./../src/gol'),
+    assert = require('assert');
 
 describe("Game of Life", function() {
     describe("nothing", function() {
