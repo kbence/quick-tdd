@@ -6,12 +6,12 @@ import(
 )
 
 // Don't touch, just a hook for gocheck
-func Test(t *testing.T) { TestingT(T) }
+func Test(t *testing.T) { TestingT(t) }
 
 type GolSuite struct {}
 
 var _ = Suite(&GolSuite{})
 
 func (s *GolSuite) TestMethod(c *C) {
-    c.Assert(1, Method(), "Equals")
+    c.Assert(1, Equals, Method())
 }

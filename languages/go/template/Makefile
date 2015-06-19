@@ -9,4 +9,4 @@ autotest:
 	go test
 
 go_get:
-	go get
+	go get "gopkg.in/check.v1"
