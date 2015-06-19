@@ -16,9 +16,17 @@ function test_language() {
     return $?
 }
 
-for language in "$LANGUAGE_ROOT"/*; do
-    if ! test_language "$(basename "$language")"; then
-        echo "Testing with language $language has failed!"
+for language_dir in "$LANGUAGE_ROOT"/*; do
+    language="$(basename "$language_dir")"
+
+    if (. "$language_dir/check.sh" && "${language}"_available); then
+        echo "Testing template for $language..."
+
+        if ! test_language "$language"; then
+            echo "Testing template for $language has failed!"
+        fi
+    else
+        echo "Skipping template for language $language as it's not available on this machine!"
     fi
 done
 
