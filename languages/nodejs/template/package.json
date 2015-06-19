@@ -1,0 +1,11 @@
+{
+  "name": "gol",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gol.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha -R nyan"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,54 @@
+#!/bin/bash
+
+ROOT_DIR=$(cd $(dirname "$0")/.. && pwd)
+PROJECT_ROOT="$ROOT_DIR/src/project"
+LANGUAGE_ROOT="$ROOT_DIR/languages"
+OS_NAME=$(uname -s | tr 'A-Z' 'a-z')
+
+function print_help() {
+    echo "Usage:"
+    echo "    $0 <command> [options]"
+    echo
+    echo "Commands:"
+    echo "    create"
+    echo "        Create a project with a specific language. The resulting project"
+    echo "        will be created at \$QUICK_TDD_ROOT/projects/<name>."
+    echo
+    echo "    clean"
+    echo "        Removes all projects from \$QUICK_TDD_ROOT/projects."
+    echo
+    echo "    help"
+    echo "        Prints this help."
+}
+
+case "$OS_NAME" in
+    darwin)
+        . "$PROJECT_ROOT/non-linux.sh"
+        ;;
+    linux)
+        . "$PROJECT_ROOT/linux.sh"
+        ;;
+esac
+
+if [[ $# < 1 ]]; then
+    print_help
+else
+    CMD="$1"; shift
+
+    case "$CMD" in
+        create)
+            create_project "$@"
+            ;;
+
+        clean)
+            clean_projects "$@"
+            ;;
+
+        help|--help|-h)
+            print_help
+            ;;
+
+        *)
+            echo "Error: $1: no such command!"
+    esac
+fi
