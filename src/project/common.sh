@@ -4,9 +4,9 @@ declare -a SUPPORTED_LANGUAGES
 
 function in_array() {
     local needle=$1; shift
-    local array=$1; shift
+    declare -a array=("${!1}"); shift
 
-    for item in ${array[@]}; do
+    for item in ${array[*]}; do
         if [[ $item == $needle ]]; then
             return 0
         fi
@@ -31,7 +31,7 @@ function create_project() {
         read -p 'Project name: ' project_name
     done
 
-    while [[ -z $language ]] || ! in_array "$language" $SUPPORTED_LANGUAGES; do
+    while [[ -z $language ]] || ! in_array "$language" SUPPORTED_LANGUAGES[@]; do
         echo "Supported languages on this platform:"
         echo ${SUPPORTED_LANGUAGES[@]} | column -c $(($COLS - 4)) | sed -e 's/^/    /'
         echo
@@ -58,10 +58,7 @@ function init_languages() {
     for lang_dir in "$LANGUAGE_ROOT"/*; do
         lang_name=$(basename "$lang_dir")
 
-        . "$lang_dir/check.sh"
-        ${lang_name}_available
-
-        if (. "$lang_dir/check.sh" && ${lang_name}_available 2>/dev/null 1>&2); then
+        if (. "$lang_dir/check.sh" && "${lang_name}"_available 2>/dev/null 1>&2); then
             add_language "$lang_name"
         fi
     done
