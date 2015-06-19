@@ -47,7 +47,7 @@ function create_project() {
 }
 
 function clean_projects() {
-    find "$ROOT_DIR/projects" -type d -mindepth 1 -maxdepth 1 | xargs rm -rf
+    find "$ROOT_DIR/projects" -mindepth 1 -maxdepth 1 -type d | xargs rm -rf
 }
 
 function add_language() {
