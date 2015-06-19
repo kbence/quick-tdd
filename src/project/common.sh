@@ -41,9 +41,9 @@ function create_project() {
 
     project_dir="$ROOT_DIR/projects/$project_name"
 
-    rm -rf "$project_dir"
-    mkdir -p "$project_dir"
-    cp -rv "$ROOT_DIR/languages/$language/template"/* "$project_dir" || die "Project copy failed"
+    rm -rf "$project_dir" || die "Couldn't remove directory '$project_dir'"
+    mkdir -p "$project_dir" || die "Couldn't create directory '$project_dir'"
+    cp -r "$ROOT_DIR/languages/$language/template"/* "$project_dir" || die "Project copy failed!"
 }
 
 function clean_projects() {
