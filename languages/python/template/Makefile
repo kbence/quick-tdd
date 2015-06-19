@@ -2,7 +2,7 @@
 
 all: modules
 
-test:
+test: modules
 	python -m unittest -- gol_test
 
 modules:
