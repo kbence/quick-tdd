@@ -1,2 +1,6 @@
 /projects/*
 !/projects/.gitkeep
+
+.idea/
+*.iml
+
