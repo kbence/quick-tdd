@@ -4,7 +4,7 @@
   "description": "",
   "main": "gol.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha -R nyan"
+    "test": "./node_modules/.bin/mocha -R spec"
   },
   "author": "",
   "license": "ISC",
