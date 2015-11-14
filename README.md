@@ -6,7 +6,7 @@ This repository contains skeleton projects for a few languages to help people up
 
     git clone https://github.com/kbence/quick-tdd.git
     cd quick-tdd
-    ./bin/projects create
+    ./bin/project create
 
 This will ask you about the project name and language you'd like to use and create it in the `./projects/<project_name>/` directory.
 
